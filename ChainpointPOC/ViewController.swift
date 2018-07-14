@@ -31,6 +31,15 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
+    private func showResult(result: String) {
+        let alert = UIAlertController(title: "Result", message: result, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+
+        }))
+
+        present(alert, animated: true, completion: nil)
+    }
 }
 
 extension ViewController: UITableViewDelegate {
@@ -56,11 +65,13 @@ extension ViewController: UITableViewDelegate {
 
         print("Buying \(planet) (\(planetHash))...")
 
-        SessionManager.shared.postHash(hash: planet.sha256(), completionHandler: { (error) in
+        SessionManager.shared.postHash(hash: planet.sha256(), completionHandler: { [weak self] (error) in
             if let error = error {
                 print(error.localizedDescription)
+                self?.showResult(result: error.localizedDescription)
             } else {
-               print("Success.")
+                print("Success.")
+                self?.showResult(result: "Success.")
             }
         })
     }

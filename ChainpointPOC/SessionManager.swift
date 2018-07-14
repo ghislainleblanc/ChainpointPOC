@@ -57,10 +57,10 @@ class SessionManager {
         }
 
         let parameters: [String: Any] = [
-            "hashes" : [hash]
+            "hashes": [hash]
         ]
 
-        Alamofire.request("\(nodeURL)\(Constants.hashesURL)", method:.post, parameters: parameters, encoding: JSONEncoding.default).responseJSON { response in
+        Alamofire.request("\(nodeURL)\(Constants.hashesURL)", method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON { response in
             print(response.debugDescription)
             if let error = response.error {
                 completionHandler?(error)
