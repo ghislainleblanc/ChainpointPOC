@@ -31,8 +31,19 @@ struct Constants {
 class SessionManager {
     static let shared = SessionManager()
 
-    var randomNodes: [Node]?
+    private var randomNodes: [Node]?
 
+    var planets: Array<Planet>
+
+    init() {
+        let mercury = Planet(name: "Mercury", hash: nil, hashIdNode: nil)
+        let earth = Planet(name: "Earth", hash: nil, hashIdNode: nil)
+        let venus = Planet(name: "Venus", hash: nil, hashIdNode: nil)
+        let uranus = Planet(name: "Uranus", hash: nil, hashIdNode: nil)
+        let mars = Planet(name: "Mars", hash: nil, hashIdNode: nil)
+
+        planets = [mercury, earth, venus, uranus, mars]
+    }
     func getRandomNodes(completionHandler: ((Error?) -> ())?) {
         Alamofire.request(Constants.randomNodesURL, method: .get).responseArray { [weak self] (response: DataResponse<[Node]>) in
             print(response.debugDescription)

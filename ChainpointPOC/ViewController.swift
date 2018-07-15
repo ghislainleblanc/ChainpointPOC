@@ -18,11 +18,7 @@ class ViewController: UIViewController {
             if let error = error {
                 print(error.localizedDescription)
             } else {
-                guard let randomNodes = SessionManager.shared.randomNodes else {
-                    return
-                }
-                
-                print(randomNodes)
+                print("Success.")
             }
         }
     }
@@ -44,34 +40,19 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var planet: String
+        SessionManager.shared.planets[indexPath.row].hash = SessionManager.shared.planets[indexPath.row].name.sha256()
 
-        switch indexPath.row {
-        case 0:
-            planet = "Mercury"
-        case 1:
-            planet = "Earth"
-        case 2:
-            planet = "Venus"
-        case 3:
-            planet = "Uranus"
-        case 4:
-            planet = "Mars"
-        default:
-            planet = "N/A"
-        }
+        print("Buying \(SessionManager.shared.planets[indexPath.row].name) (\(SessionManager.shared.planets[indexPath.row].hash!))...")
 
-        let planetHash = planet.sha256()
-
-        print("Buying \(planet) (\(planetHash))...")
-
-        SessionManager.shared.postHash(hash: planet.sha256(), completionHandler: { [weak self] (error) in
+        SessionManager.shared.postHash(hash: SessionManager.shared.planets[indexPath.row].hash!, completionHandler: { [weak self] (error) in
             if let error = error {
                 print(error.localizedDescription)
                 self?.showResult(result: error.localizedDescription)
             } else {
                 print("Success.")
                 self?.showResult(result: "Success.")
+
+                tableView.reloadData()
             }
         })
     }
@@ -88,20 +69,15 @@ extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
-        switch indexPath.row {
-        case 0:
-            cell.textLabel?.text = "Mercury"
-        case 1:
-            cell.textLabel?.text = "Earth"
-        case 2:
-            cell.textLabel?.text = "Venus"
-        case 3:
-            cell.textLabel?.text = "Uranus"
-        case 4:
-            cell.textLabel?.text = "Mars"
-        default:
-            break
+        let planet = SessionManager.shared.planets[indexPath.row]
+        cell.textLabel?.text = planet.name
+
+        guard let hash = planet.hash else {
+            cell.detailTextLabel?.text = ""
+            return cell
         }
+
+        cell.detailTextLabel?.text = hash
 
         return cell
     }

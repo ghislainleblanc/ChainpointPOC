@@ -16,6 +16,7 @@
 		373187EF20F6709500B5B0D8 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 373187EE20F6709500B5B0D8 /* Podfile */; };
 		373187F120F673AB00B5B0D8 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373187F020F673AB00B5B0D8 /* Node.swift */; };
 		373187F320F6766200B5B0D8 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373187F220F6766200B5B0D8 /* SessionManager.swift */; };
+		37D8B17C20FC0F1A00B272BF /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D8B17B20FC0F1A00B272BF /* Planet.swift */; };
 		4D8FF88588F04514E5694B69 /* Pods_ChainpointPOC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91C8A526A69664C4909198A0 /* Pods_ChainpointPOC.framework */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +46,7 @@
 		373187EE20F6709500B5B0D8 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		373187F020F673AB00B5B0D8 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		373187F220F6766200B5B0D8 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		37D8B17B20FC0F1A00B272BF /* Planet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
 		91C8A526A69664C4909198A0 /* Pods_ChainpointPOC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChainpointPOC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEFAF3B703F32421DA1CC116 /* Pods-ChainpointPOC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChainpointPOC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ChainpointPOC/Pods-ChainpointPOC.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -101,6 +103,7 @@
 				373187DA20F6708500B5B0D8 /* Info.plist */,
 				373187F020F673AB00B5B0D8 /* Node.swift */,
 				373187F220F6766200B5B0D8 /* SessionManager.swift */,
+				37D8B17B20FC0F1A00B272BF /* Planet.swift */,
 			);
 			path = ChainpointPOC;
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 				373187D120F6708300B5B0D8 /* ViewController.swift in Sources */,
 				373187F320F6766200B5B0D8 /* SessionManager.swift in Sources */,
 				373187CF20F6708300B5B0D8 /* AppDelegate.swift in Sources */,
+				37D8B17C20FC0F1A00B272BF /* Planet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
